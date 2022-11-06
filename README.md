@@ -1,7 +1,5 @@
 # What is BidDAO?
 
-
-
 ## Getting Started
 
 ```bash
@@ -35,7 +33,6 @@ yarn build
 # Start server with build files
 yarn start
 ```
-
 
 **Contract Types**
 
