@@ -64,7 +64,7 @@ function BidCard({}: Props) {
                 value={state.yourBid}
                 onChange={e => setState({ ...state, maxPrice: e.target.value })}
               /> */}
-              <p className="mt-4">Your Bid / Balance</p>
+              <p className="mt-4">Your Locked / Balance</p>
               <progress className="progress progress-accent w-56" value="70" max="100"></progress>
               <div className="card-actions mt-8 justify-end">
                 <button className="btn-primary btn" disabled={!write} onClick={() => write?.()}>
