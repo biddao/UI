@@ -17,9 +17,9 @@ function BidCard({}: Props) {
             <div>
               <h2 className="card-title mb-10">Live Auction</h2>
               <input type="number" placeholder="Max Price" className="input  my-2 w-full max-w-xs" />
-              <input type="number" placeholder="Lowest Price" className="input my-2 w-full max-w-xs" />
               <input type="number" placeholder="Your Bid" className="input my-2 w-full max-w-xs" />
-              <p className="mt-4">Your Bid / Balance</p>
+              <input type="number" placeholder="Locked Eth" className="input my-2 w-full max-w-xs" />
+              <p className="mt-4">Your Locked / Balance</p>
               <progress className="progress progress-accent w-56" value="70" max="100"></progress>
               <div className="card-actions mt-8 justify-end">
                 <button className="btn-primary btn">Bid Now</button>
