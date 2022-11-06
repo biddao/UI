@@ -59,7 +59,7 @@ const gnosisChain: Chain = {
 
 // Web3 Configs
 const { chains, provider } = configureChains(
-  [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum, gnosisChain],
+  [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum, chain.localhost, gnosisChain],
   [
     infuraProvider({ apiKey: process.env.NEXT_PUBLIC_INFURA_ID !== '' && process.env.NEXT_PUBLIC_INFURA_ID }),
     jsonRpcProvider({

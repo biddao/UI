@@ -9,7 +9,8 @@
     "lint": "next lint",
     "fc": "npx prettier --check ./src",
     "ff": "npx prettier --write ./src",
-    "compile-contract-types": "typechain --target ethers-v5 --out-dir \"src/contracts/types\" \"src/contracts/*.json\""
+    "gen-gql": "graphql-codegen -r dotenv/config",
+    "compile-contract-types": "typechain --target ethers-v5 --out-dir \"src/contracts/types\" \"src/contracts/abi/*.json\""
   },
   "dependencies": {
     "@headlessui/react": "^1.7.4",
@@ -19,7 +20,9 @@
     "@tailwindcss/typography": "^0.5.7",
     "autoprefixer": "^10.4.13",
     "daisyui": "^2.38.1",
+    "dotenv": "^16.0.3",
     "ethers": "^5.7.2",
+    "graphql": "^16.6.0",
     "next": "^13.0.2",
     "next-themes": "^0.2.1",
     "postcss": "^8.4.18",

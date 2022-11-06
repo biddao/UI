@@ -24,8 +24,8 @@ function AuctionList({}: Props) {
                 <h2 className="card-title">{auction.name}</h2>
                 <p>{auction.desc}</p>
                 <div className="card-actions justify-end">
-                  <Link href='/'>
-                  <button className="btn-primary btn">Bid Now</button>
+                  <Link href="/">
+                    <button className="btn-primary btn">Bid Now</button>
                   </Link>
                 </div>
               </div>

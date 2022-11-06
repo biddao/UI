@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import BidCard from './BidCard'
-
+import { useContractRead, useContractEvent, useContract, useAccount } from 'wagmi'
+import AuctionABI from '../contracts/abi/Auction.json'
+import { AuctionContractAddress } from '../constants'
+import { ethers } from 'ethers'
 type Props = {}
 
 const AuctionApp = (props: Props) => {
@@ -37,27 +40,74 @@ const fakeBidsData = [
 ]
 
 function BidsList() {
+  const { isConnected } = useAccount()
+  const { data, isError, isLoading } = useContractRead({
+    abi: AuctionABI,
+    functionName: 'bidCount',
+    args: [],
+    address: AuctionContractAddress,
+  })
+
+  const [previousLogs, setPreviousLogs] = useState([])
+
+  const listener = async (bidder, encryptedBidAmount, encryptedMaxPrice) => {
+    setPreviousLogs([...previousLogs, { bidder, encryptedBidAmount, encryptedMaxPrice }])
+  }
+
+  useContractEvent({
+    address: AuctionContractAddress,
+    abi: AuctionABI,
+    eventName: 'BidSubmitted',
+    listener,
+    chainId: 1337,
+  })
+
+  //TODO: Look for all Events
+  //      Not just recent
+
+  // const contract = useContract({
+  //   address: AuctionContractAddress,
+  //   abi: AuctionABI,
+  // })
+  // useEffect(() => {
+  //   async function getPreviousLogs() {
+  //     // Create a filter to get the logs
+  //     const filter = contract.filters.BidSubmitted()
+
+  //     // Get the logs using the filter
+  //     try {
+  //       const logs = await contract.queryFilter(filter)
+  //       setPreviousLogs(logs)
+  //     } catch (err) {
+  //       console.log(err)
+  //     }
+  //   }
+
+  //   if (contract) getPreviousLogs()
+  // }, [contract, isConnected])
+
   return (
     <div>
-      <h2 className="my-10 text-3xl font-semibold">Bids List</h2>
+      <h2 className="my-10 text-3xl font-semibold">Recent Bids List</h2>
+      {/* <p className="my-10 text-3xl font-semibold">Current Count {!isLoading ? data?.toString() : ''}</p> */}
+
       <div className="w-full overflow-x-auto">
         <table className="table w-full">
           <thead>
             <tr>
               <th>Wallet</th>
-              <th>Date</th>
+              {/* <th>Date</th> */}
               <th>Public Key</th>
               <th>Private Key</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            {fakeBidsData.map(bidder => {
+            {previousLogs.map(bidder => {
               return (
                 <>
                   <tr>
-                    <td>{bidder.address}</td>
-                    <td>{bidder.date}</td>
+                    <td>{bidder.bidder}</td>
                     <th>
                       <input type="checkbox" className="checkbox" checked={bidder.isPubKeyShowed} />
                     </th>

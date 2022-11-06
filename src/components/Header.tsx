@@ -24,7 +24,7 @@ const Header = (props: Props) => {
       <div className="navbar bg-base-100">
         <div className="flex-1 gap-4">
           <Link href="/">
-            <Image src={logo} alt=""/>
+            <Image src={logo} alt="" />
           </Link>
           <Link href="/auctions">Auctions List</Link>
         </div>
