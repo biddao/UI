@@ -1,11 +1,13 @@
 import React from 'react'
+import BidCard from './BidCard'
 
 type Props = {}
 
 const AuctionApp = (props: Props) => {
   return (
     <div className="container mx-auto max-w-6xl p-8 2xl:px-0">
-      <h1 className="my-10 text-4xl font-semibold">US Constitution DAO</h1>
+      <h1 className="my-10 text-4xl font-semibold text-white">US Constitution DAO</h1>
+      <BidCard />
       <BidsList />
     </div>
   )

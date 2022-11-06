@@ -1,9 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ThemeToggleButton, ThemeToggleList } from 'components/Theme'
 import { useNetwork, useSwitchNetwork, useAccount, useBalance } from 'wagmi'
 import ConnectWallet from 'components/Connect/ConnectWallet'
 import { useConnectModal, useAccountModal, useChainModal } from '@rainbow-me/rainbowkit'
+import logo from '../../public/logo.png'
 
 type Props = {}
 
@@ -20,9 +22,9 @@ const Header = (props: Props) => {
   return (
     <>
       <div className="navbar bg-base-100">
-        <div className="flex-1">
-          <Link href="/" className="btn-ghost btn text-xl normal-case">
-            BidDAO
+        <div className="flex-1 gap-4">
+          <Link href="/">
+            <Image src={logo} alt=""/>
           </Link>
           <Link href="/auctions">Auctions List</Link>
         </div>
